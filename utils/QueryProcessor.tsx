@@ -19,8 +19,15 @@ export default function QueryProcessor(query: string): string {
     return "ahmadp";
   }
 
-  if (query.toLowerCase().includes("What%20is%202%20plus%2048%3F")) {
-    return "50"; 
+  const addition = query.toLowerCase().match(
+    /what is (\d+) plus (\d+)/ 
+  );
+
+  if (addition) {
+    const num1 = Number(addition[1]);
+    const num2 = Number(addition[2]);
+
+    return String(num1 + num2);
   }
 
   return "";
